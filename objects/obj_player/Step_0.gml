@@ -10,7 +10,6 @@ attack = keyboard_check(ord("J"));
 //Codigo de Movimentação
 velx = (right - left) * max_velx;
 
-
 //Aplicando Gravidade
 if (!chao){
 	if (vely < max_vely * 2){
@@ -19,26 +18,24 @@ if (!chao){
 }
 //Iniciando a maquina de estados
 switch(estado){
-	case "parado" :{
-		//Comportamento do estado
-		sprite_index = spr_player_idle;
-		
-		//Condição de troca de estado
-		//Movendo
-		if (right || left){
-			estado = "movendo";	
-		}
-			else if (jump || vely != 0 ){			
-				estado = "pulando";
-				vely = (-max_vely * jump); 
-			}
-				else if(attack){
-					estado = "ataque";
-					velx = 0;
-				}
-		
-		break;
-	}
+    case "parado": {
+        // Comportamento do estado
+        sprite_index = spr_player_idle;
+
+        // Condição de troca de estado
+        // Movendo
+        if ((right && !left) || (!right && left)) {
+            estado = "movendo";
+        } else if (jump || vely != 0) {
+            estado = "pulando";
+            vely = (-max_vely * jump);
+        } else if (attack) {
+            estado = "ataque";
+            velx = 0;
+        }
+
+        break;
+    }
 	case "movendo":{
 		//Comportamento do estado de movimento
 		sprite_index = spr_player_run;
@@ -73,11 +70,28 @@ switch(estado){
 		break;
 	}	
 	case "ataque" :{
-		velx = 0;
-		sprite_index = spr_player_atk1;
+		velx = 0;		
+		
+		if (combo == 0){
+			sprite_index = spr_player_atk1;
+		}else if(combo == 1){
+			sprite_index = spr_player_atk2;
+		}
+		
+		if (attack && combo < 1 && image_index >= image_number-2){
+			combo++;
+			image_index = 0;
+		}
 		
 		if(image_index > image_number-1){
 			estado = "parado";
 		}
+		
+		if(image_index > image_number-1){
+			estado = "parado";
+			velx = 0;
+			combo = 0;
+		}
+		break;
 	}
 }
