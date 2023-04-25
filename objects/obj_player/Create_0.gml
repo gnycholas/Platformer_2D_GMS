@@ -7,6 +7,6 @@ max_vida = 10;
 vida_atual = max_vida;
 
 max_velx = 4; 
-max_vely = 6;
+max_vely = 7;
 
 mostra_estado = true;

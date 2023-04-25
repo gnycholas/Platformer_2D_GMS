@@ -1,8 +1,6 @@
-/// @description Inserir descrição aqui
-// Você pode escrever seu código neste editor
-
 draw_self();
 
+// Inidica o estado em que o objeto está
 if (mostra_estado){
 	draw_set_valign(fa_middle);
 	draw_set_halign(fa_center);

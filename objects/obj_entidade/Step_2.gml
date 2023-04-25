@@ -1,7 +1,3 @@
-/// @description Inserir descrição aqui
-// Você pode escrever seu código neste editor
- 
-
 // sistema de colisão e movimentação
 var _velx = sign(velx);
 var _vely = sign(vely);

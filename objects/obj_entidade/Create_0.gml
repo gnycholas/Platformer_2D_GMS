@@ -1,6 +1,3 @@
-/// @description Inserir descrição aqui
-// Você pode escrever seu código neste editor
-
 max_vida = 1;
 vida_atual = max_vida;
 

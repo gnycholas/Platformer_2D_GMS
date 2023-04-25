@@ -1,14 +1,11 @@
-/// @description Inserir descrição aqui
-// Você pode escrever seu código neste editor
-
 //Iniciando Variaveis
 var right, left, jump, attack;
 var chao = place_meeting(x, y + 1, obj_block);
 
-
 right = keyboard_check(ord("D"));
 left = keyboard_check(ord("A"));
 jump = (keyboard_check(vk_space));
+attack = keyboard_check(ord("J"));
 
 //Codigo de Movimentação
 velx = (right - left) * max_velx;
@@ -16,21 +13,13 @@ velx = (right - left) * max_velx;
 
 //Aplicando Gravidade
 if (!chao){
-	
 	if (vely < max_vely * 2){
 		vely += GRAVIDADE * massa;
 	}
 }
-else{
-	if (jump)
-	{
-		vely = -max_vely; 
-	}
-}
-
 //Iniciando a maquina de estados
 switch(estado){
-	case "parado":{
+	case "parado" :{
 		//Comportamento do estado
 		sprite_index = spr_player_idle;
 		
@@ -39,6 +28,14 @@ switch(estado){
 		if (right || left){
 			estado = "movendo";	
 		}
+			else if (jump || vely != 0 ){			
+				estado = "pulando";
+				vely = (-max_vely * jump); 
+			}
+				else if(attack){
+					estado = "ataque";
+					velx = 0;
+				}
 		
 		break;
 	}
@@ -52,7 +49,35 @@ switch(estado){
 			estado = "parado";
 			velx = 0;
 		}
-		
+		else if (jump){			
+				estado = "pulando";
+				vely = -max_vely; 
+			}
+				else if (attack){
+					estado = "ataque";
+					velx = 0;
+				}			
 	break;
 	}
-} 
+	case "pulando":{
+		// Caindo
+		if(vely > 0 ){
+			sprite_index = spr_player_fall
+		}
+		else{
+			sprite_index = spr_player_jump
+		}
+		if (chao){
+			estado = "parado";
+		}
+		break;
+	}	
+	case "ataque" :{
+		velx = 0;
+		sprite_index = spr_player_atk1;
+		
+		if(image_index > image_number-1){
+			estado = "parado";
+		}
+	}
+}
