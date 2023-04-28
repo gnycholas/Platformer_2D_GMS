@@ -16,6 +16,7 @@ if (!chao){
 		vely += GRAVIDADE * massa;
 	}
 }
+
 //Iniciando a maquina de estados
 switch(estado){
     case "parado": {
@@ -26,12 +27,12 @@ switch(estado){
         // Movendo
         if ((right && !left) || (!right && left)) {
             estado = "movendo";
-        } else if (jump || vely != 0) {
-            estado = "pulando";
-            vely = (-max_vely * jump);
-        } else if (attack) {
-            estado = "ataque";
-            velx = 0;
+	        } else if (jump || vely != 0) {
+	            estado = "pulando";
+	            vely = (-max_vely * jump);
+		        } else if (attack) {
+		            estado = "ataque";
+		            velx = 0;
         }
 
         break;
