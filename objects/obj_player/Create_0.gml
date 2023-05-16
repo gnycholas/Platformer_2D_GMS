@@ -12,3 +12,5 @@ max_vely = 7;
 mostra_estado = true;
 
 combo = 0;
+dano = noone;
+posso = true;

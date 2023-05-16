@@ -6,9 +6,11 @@ if (!chao){
 
 switch(estado){
     case "parado": {
+		
 		//if(sprite_index != spr_enemy_idle){
 		//	image_index = 0;
 		//}
+		
         sprite_index = spr_enemy_idle;
 
         // Condição de troca de estado
@@ -22,12 +24,12 @@ switch(estado){
 	case "hit":{
 		if(sprite_index != spr_enemy_hit){
 			image_index =0;
-			vida_atual--;
 		}
 		sprite_index = spr_enemy_hit;
 		
+		//Condição para sair do estado
 		if(image_index > image_number-1){
-			if(vida_atual > 0){			
+			if(vida_atual > 0){
 			estado = "parado";
 			}
 			else if(vida_atual <= 0){
@@ -41,10 +43,13 @@ switch(estado){
 			image_index = 0;
 		}
 		sprite_index = spr_enemy_death;
-		
+
 		//Morrendo
 		if(image_index > image_number-1){
-			instance_destroy();
+			image_speed = 0;
+			image_alpha -= .02;
+			
+			if(image_alpha <= 0) instance_destroy();
 		}
 	}
 }

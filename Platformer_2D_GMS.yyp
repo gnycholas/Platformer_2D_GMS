@@ -50,6 +50,7 @@
   "resources": [
     {"id":{"name":"spr_player_dash","path":"sprites/spr_player_dash/spr_player_dash.yy",},},
     {"id":{"name":"spr_player_slide","path":"sprites/spr_player_slide/spr_player_slide.yy",},},
+    {"id":{"name":"spr_dano","path":"sprites/spr_dano/spr_dano.yy",},},
     {"id":{"name":"spr_player_atk2","path":"sprites/spr_player_atk2/spr_player_atk2.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"spr_player_roll","path":"sprites/spr_player_roll/spr_player_roll.yy",},},
@@ -66,6 +67,7 @@
     {"id":{"name":"spr_player_jump","path":"sprites/spr_player_jump/spr_player_jump.yy",},},
     {"id":{"name":"spr_enemy_atk","path":"sprites/spr_enemy_atk/spr_enemy_atk.yy",},},
     {"id":{"name":"spr_block","path":"sprites/spr_block/spr_block.yy",},},
+    {"id":{"name":"obj_dano","path":"objects/obj_dano/obj_dano.yy",},},
     {"id":{"name":"spr_player_atk1","path":"sprites/spr_player_atk1/spr_player_atk1.yy",},},
     {"id":{"name":"spr_player_fall_jump","path":"sprites/spr_player_fall_jump/spr_player_fall_jump.yy",},},
     {"id":{"name":"spr_enemy_walk","path":"sprites/spr_enemy_walk/spr_enemy_walk.yy",},},

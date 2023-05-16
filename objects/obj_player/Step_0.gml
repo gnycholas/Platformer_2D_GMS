@@ -79,9 +79,18 @@ switch(estado){
 			sprite_index = spr_player_atk2;
 		}
 		
+		//Crinado objeto de dano
+		if (image_index >= 2 && dano == noone && posso){
+			dano = instance_create_layer(x + sprite_width/3, y - sprite_height/3, layer, obj_dano)
+			dano.dano = ataque;
+			dano.pai = id;
+			posso = false;
+		}
+		
 		if (attack && combo < 1 && image_index >= image_number-2){
 			combo++;
 			image_index = 0;
+			posso = true;
 		}
 		
 		if(image_index > image_number-1){
@@ -92,6 +101,7 @@ switch(estado){
 			estado = "parado";
 			velx = 0;
 			combo = 0;
+			posso = true;
 		}
 		break;
 	}
